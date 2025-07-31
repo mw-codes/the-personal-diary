@@ -1,6 +1,8 @@
 // src/components/AddEntryModal.jsx
 import React, { useState } from "react";
 
+const defaultImageUrl = "/images/default.png"; // Relativer Pfad in public/
+
 const AddEntryModal = ({ onClose, onSave }) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
@@ -12,7 +14,7 @@ const AddEntryModal = ({ onClose, onSave }) => {
     e.preventDefault();
 
     // Validierung
-    if (!title || !date || !imageUrl || !content) {
+    if (!title || !date || !content) {
       setError("Bitte fülle alle Felder aus.");
       return;
     }
@@ -22,7 +24,7 @@ const AddEntryModal = ({ onClose, onSave }) => {
       id: Date.now(),
       title,
       date,
-      imageUrl,
+      imageUrl: imageUrl || defaultImageUrl, // Fallback
       content,
     };
 
@@ -55,7 +57,7 @@ const AddEntryModal = ({ onClose, onSave }) => {
           />
           <input
             type="text"
-            placeholder="Bild-URL"
+            placeholder="Bild-URL (optional)"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             className="w-full bg-gray-700 border border-gray-600 rounded p-2 text-white placeholder-gray-400"
