@@ -1,7 +1,8 @@
 // src/components/AddEntryModal.jsx
 import React, { useState } from "react";
 
-const defaultImageUrl = "/images/default.png"; // Relativer Pfad in kleines p public/
+const defaultImageUrl =
+  "https://images.pexels.com/photos/942872/pexels-photo-942872.jpeg";
 
 const AddEntryModal = ({ onClose, onSave }) => {
   const [title, setTitle] = useState("");
